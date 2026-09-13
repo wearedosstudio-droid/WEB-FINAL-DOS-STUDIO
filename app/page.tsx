@@ -5,7 +5,7 @@ import Portfolio from "@/components/Portfolio";
 import About from "@/components/About";
 import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
-import ContactForm from "@/components/ContactForm";
+import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
         <About />
         <Process />
         <Testimonials />
-        <ContactForm />
+        <CtaBanner />
       </main>
       <Footer />
     </>

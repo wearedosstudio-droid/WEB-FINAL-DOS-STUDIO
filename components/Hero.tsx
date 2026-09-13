@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Container from "./ui/Container";
 
 const stats = [
@@ -40,18 +41,18 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <a
-              href="#contacto"
+            <Link
+              href="/contacto"
               className="rounded-full bg-violet px-7 py-3.5 text-sm font-medium text-white transition-colors hover:bg-ink"
             >
               Cuéntanos tu proyecto
-            </a>
-            <a
-              href="#proyectos"
+            </Link>
+            <Link
+              href="/proyectos"
               className="text-sm font-medium text-ink underline decoration-line decoration-2 underline-offset-4 hover:decoration-violet"
             >
               Ver proyectos recientes
-            </a>
+            </Link>
           </motion.div>
 
           <div className="mt-16 grid max-w-xl grid-cols-3 gap-6 border-t border-line pt-8">

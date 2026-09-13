@@ -22,35 +22,61 @@ path, o sustituir el `<Logomark />` por un `<Image src="/logo.svg" ... />`.
 
 ## Estructura del proyecto
 
+Ya **no es una landing de una sola página**: cada sección principal vive en
+su propia ruta, con Home actuando como puerta de entrada que enlaza a cada
+una.
+
 ```
 dos-studio/
 ├── app/
-│   ├── api/contact/route.ts   # Endpoint del formulario de contacto
-│   ├── globals.css            # Tokens de color/tipografía y estilos base
-│   ├── icon.svg                # Favicon (isotipo de marca)
-│   ├── layout.tsx             # Layout raíz, fuentes y metadata SEO
-│   └── page.tsx               # Ensambla todas las secciones de la home
+│   ├── api/contact/route.ts     # Endpoint del formulario de contacto
+│   ├── servicios/
+│   │   ├── page.tsx             # Listado completo de los 8 servicios
+│   │   └── [slug]/page.tsx      # Página individual de cada servicio
+│   ├── proceso/page.tsx         # Las 5 etapas del proceso, en profundidad
+│   ├── proyectos/page.tsx       # Portfolio completo
+│   ├── nosotros/page.tsx        # Sobre el equipo, valores y "encaje ideal"
+│   ├── contacto/page.tsx        # Formulario de contacto
+│   ├── globals.css              # Tokens de color/tipografía y estilos base
+│   ├── icon.svg                  # Favicon (isotipo de marca)
+│   ├── layout.tsx               # Layout raíz, fuentes y metadata SEO
+│   └── page.tsx                 # Home: resumen corto de cada sección + CTAs
+├── lib/
+│   ├── services.ts               # Datos de los 8 servicios (usado por Home y /servicios)
+│   ├── process.ts                # Datos de las 5 etapas del proceso
+│   └── projects.ts               # Datos de los proyectos del portfolio
 ├── components/
 │   ├── ui/
-│   │   ├── Arc.tsx            # Motivo decorativo (cuarto de círculo)
-│   │   ├── Container.tsx      # Wrapper de ancho máximo
-│   │   ├── Logomark.tsx       # Isotipo vectorial reutilizable
-│   │   └── ProjectVisual.tsx  # Placeholders de proyecto en la paleta de marca
-│   ├── About.tsx
-│   ├── ContactForm.tsx
+│   │   ├── Arc.tsx              # Motivo decorativo (cuarto de círculo)
+│   │   ├── Container.tsx        # Wrapper de ancho máximo
+│   │   ├── Logomark.tsx         # Isotipo vectorial reutilizable
+│   │   ├── ServiceIcon.tsx      # Iconos de cada servicio, por slug
+│   │   └── ProjectVisual.tsx    # Placeholders de proyecto en la paleta de marca
+│   ├── About.tsx                # Teaser de "Nosotros" en Home
+│   ├── ContactForm.tsx          # Formulario (usado en /contacto)
+│   ├── CtaBanner.tsx            # Banner final de la Home
 │   ├── Footer.tsx
-│   ├── Header.tsx
+│   ├── Header.tsx               # Nav a las páginas reales del sitio
 │   ├── Hero.tsx
-│   ├── Portfolio.tsx
-│   ├── Process.tsx
-│   ├── Services.tsx
+│   ├── Portfolio.tsx            # Teaser de proyectos en Home
+│   ├── Process.tsx              # Teaser de proceso en Home
+│   ├── Services.tsx             # Teaser de servicios en Home
 │   └── Testimonials.tsx
 ├── public/
-│   └── brand-original/        # Tus JPG originales, guardados como referencia
+│   └── brand-original/          # Tus JPG originales, guardados como referencia
 ├── tailwind.config.ts
 ├── next.config.js
 └── package.json
 ```
+
+### Cómo agregar o editar un servicio
+
+Todo el contenido de cada servicio vive en un solo lugar:
+`lib/services.ts`. Cada objeto del array genera automáticamente su tarjeta
+en `/servicios` **y** su página propia en `/servicios/[slug]` — no hay que
+tocar ningún componente para añadir un noveno servicio, solo agregar un
+nuevo objeto al array (y su icono correspondiente en
+`components/ui/ServiceIcon.tsx`).
 
 ## Tokens de diseño usados
 
@@ -137,5 +163,9 @@ vercel --prod # despliegue a producción
   en la paleta de marca (`ProjectVisual.tsx`); cuando tengas capturas reales
   de proyectos, sustitúyelos por `next/image` apuntando a `/public`.
 - **Servicios**: array `services` en `components/Services.tsx`.
-- **Datos de contacto**: `components/ContactForm.tsx` y `Footer.tsx`.
+- **Datos de contacto**: `components/ContactForm.tsx` y `Footer.tsx`
+  (actualmente: wearedosstudio@gmail.com · +34 684 34 29 84 · +34 635 37 27 54
+  · Barcelona, España).
+- **Etapas del proceso**: array `processSteps` en `lib/process.ts`.
+- **Proyectos**: array `projects` en `lib/projects.ts`.
 - **Colores/tipografía**: `tailwind.config.ts` y `app/layout.tsx`.

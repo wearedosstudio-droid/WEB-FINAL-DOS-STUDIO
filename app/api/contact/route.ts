@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     // const resend = new Resend(process.env.RESEND_API_KEY);
     // await resend.emails.send({
     //   from: "Dos Studio <web@dosstudio.com>",
-    //   to: "hola@dosstudio.com",
+    //   to: "wearedosstudio@gmail.com",
     //   subject: `Nuevo contacto: ${name}`,
     //   text: `Empresa: ${company}\nServicio: ${service}\nEmail: ${email}\n\n${message}`,
     // });

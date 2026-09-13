@@ -56,15 +56,16 @@ export default function ContactForm() {
           <div className="mt-10 space-y-4 text-sm">
             <div>
               <div className="text-graphite">Email</div>
-              <div className="font-medium text-ink">hola@dosstudio.com</div>
+              <div className="font-medium text-ink">wearedosstudio@gmail.com</div>
             </div>
             <div>
               <div className="text-graphite">Teléfono</div>
-              <div className="font-medium text-ink">+34 900 123 456</div>
+              <div className="font-medium text-ink">+34 684 34 29 84</div>
+              <div className="font-medium text-ink">+34 635 37 27 54</div>
             </div>
             <div>
               <div className="text-graphite">Oficina</div>
-              <div className="font-medium text-ink">Madrid, España</div>
+              <div className="font-medium text-ink">Barcelona, España</div>
             </div>
           </div>
         </div>
@@ -164,7 +165,7 @@ export default function ContactForm() {
           {status === "error" && (
             <p className="text-sm font-medium text-red-600">
               Algo falló al enviar el mensaje. Escríbenos directamente a
-              hola@dosstudio.com.
+              wearedosstudio@gmail.com.
             </p>
           )}
         </form>
