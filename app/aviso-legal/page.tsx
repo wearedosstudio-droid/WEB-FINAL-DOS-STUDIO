@@ -55,7 +55,7 @@ export default function AvisoLegalPage() {
                   </h2>
                   <p className="mt-3">
                     El presente aviso legal regula el uso del sitio web
-                    dosstudio.com (en adelante, "el sitio web"), del que es
+                    dosstudio.com (en adelante, «el sitio web»), del que es
                     titular Dos Studio. La navegación por el sitio web supone
                     la aceptación plena de este aviso legal.
                   </p>
