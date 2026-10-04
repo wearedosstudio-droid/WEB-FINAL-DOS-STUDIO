@@ -44,3 +44,50 @@
     scroll-behavior: auto !important;
   }
 }
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-violet px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-10px_rgba(84,48,255,0.7)];
+  }
+
+  .btn-light {
+    @apply inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-violet-soft;
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-medium text-white transition-colors duration-300 hover:border-white hover:bg-white/10;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full bg-violet-soft px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-violet;
+  }
+
+  .eyebrow-dark {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white/80;
+  }
+
+  .section-title {
+    @apply text-balance font-display text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl lg:text-[3.5rem];
+  }
+
+  .bg-brand-glow {
+    background-color: #1b0e66;
+    background-image:
+      radial-gradient(60% 60% at 85% 10%, rgba(84, 48, 255, 0.85) 0%, rgba(84, 48, 255, 0) 70%),
+      radial-gradient(45% 50% at 0% 100%, rgba(84, 48, 255, 0.55) 0%, rgba(84, 48, 255, 0) 70%);
+  }
+
+  .bg-grid-light {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float {
+    animation: none !important;
+  }
+}

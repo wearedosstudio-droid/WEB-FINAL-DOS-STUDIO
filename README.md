@@ -40,8 +40,11 @@ dos-studio/
 │   │   ├── Logomark.tsx            # Isotipo real de marca (PNG con transparencia)
 │   │   ├── ServiceIcon.tsx         # Iconos de cada servicio, por slug
 │   │   ├── AbstractVisual.tsx      # Composiciones visuales en la paleta de marca
-│   │   └── Accordion.tsx           # Desplegable usado en todas las FAQ
-│   ├── Header.tsx / Footer.tsx
+│   │   ├── Accordion.tsx           # Desplegable usado en todas las FAQ
+│   │   └── Reveal.tsx              # Animación de aparición al hacer scroll
+│   ├── Header.tsx / Footer.tsx     # Header con mega menú de servicios
+│   ├── Pillars.tsx                 # Bloques de propuesta de valor (home)
+│   ├── PlatformMarquee.tsx         # Cinta de plataformas con las que trabajamos
 │   ├── Hero.tsx / About.tsx / Services.tsx / Process.tsx
 │   ├── BlogPreview.tsx / FaqSection.tsx / CtaBanner.tsx
 │   ├── ContactForm.tsx

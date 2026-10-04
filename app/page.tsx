@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Pillars from "@/components/Pillars";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import Process from "@/components/Process";
@@ -14,7 +15,9 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Pillars />
         <Services />
+        <div className="h-3 md:h-4" />
         <About />
         <Process />
         <BlogPreview />
