@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Container from "./ui/Container";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -42,12 +43,12 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contacto" className="border-t border-line py-24">
+    <section id="contacto" className="py-24">
       <Container className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <h2 className="text-balance font-display text-3xl font-bold tracking-tight md:text-4xl">
+          <h1 className="text-balance font-display text-3xl font-bold tracking-tight md:text-4xl">
             Hablemos de tu próximo trimestre
-          </h2>
+          </h1>
           <p className="mt-4 max-w-sm text-graphite">
             Cuéntanos en qué está tu marca hoy y a dónde quieres llevarla.
             Respondemos en menos de 24 horas hábiles con los próximos pasos.
@@ -68,6 +69,14 @@ export default function ContactForm() {
               <div className="font-medium text-ink">Barcelona, España</div>
             </div>
           </div>
+
+          <p className="mt-10 max-w-sm text-xs leading-relaxed text-graphite">
+            Al enviar este formulario aceptas nuestra{" "}
+            <Link href="/politica-de-privacidad" className="underline underline-offset-2 hover:text-violet">
+              política de privacidad
+            </Link>
+            . Solo usamos tus datos para responder a tu consulta.
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">

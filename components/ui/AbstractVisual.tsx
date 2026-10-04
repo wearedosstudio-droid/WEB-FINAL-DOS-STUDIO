@@ -5,10 +5,11 @@ const palettes = [
 ];
 
 /**
- * Placeholder de proyecto construido con la geometría de marca (arcos y
- * círculos en violeta) en lugar de una imagen de stock genérica.
+ * Composición abstracta construida con la geometría de marca (arcos y
+ * círculos en violeta), usada como portada visual donde aún no hay
+ * fotografía real.
  */
-export default function ProjectVisual({ variant = 0 }: { variant?: number }) {
+export default function AbstractVisual({ variant = 0 }: { variant?: number }) {
   const p = palettes[variant % palettes.length];
   const flip = variant % 2 === 0;
 

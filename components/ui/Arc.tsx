@@ -1,15 +1,9 @@
 type ArcProps = {
   className?: string;
   color?: string;
-  /** Rotación en grados para reorientar el cuarto de círculo */
   rotate?: number;
 };
 
-/**
- * Cuarto de círculo: el rasgo geométrico base del isotipo, reutilizado
- * como motivo decorativo consistente en toda la web (nunca como blob
- * genérico de gradiente).
- */
 export default function Arc({ className, color = "#5430FF", rotate = 0 }: ArcProps) {
   return (
     <svg

@@ -5,9 +5,9 @@ import Link from "next/link";
 import Container from "./ui/Container";
 
 const stats = [
-  { value: "3.2×", label: "ROAS promedio en cuentas de pago gestionadas" },
-  { value: "48", label: "marcas activas en gestión mensual" },
-  { value: "6 años", label: "operando en el mercado hispanohablante" },
+  { value: "2026", label: "año de fundación del estudio" },
+  { value: "2", label: "fundadores detrás de cada proyecto, sin intermediarios" },
+  { value: "Barcelona", label: "sede del estudio" },
 ];
 
 export default function Hero() {
@@ -30,9 +30,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="mt-6 max-w-md text-lg text-graphite"
           >
-            Somos Dos Studio: un equipo de estrategas, diseñadores y
-            especialistas en performance que convierte marcas en negocios que
-            crecen mes a mes, en digital.
+            Somos Dos Studio: un estudio de estrategia, diseño y performance
+            con base en Barcelona, fundado por dos socios que acompañan cada
+            cuenta de principio a fin.
           </motion.p>
 
           <motion.div
@@ -48,10 +48,10 @@ export default function Hero() {
               Cuéntanos tu proyecto
             </Link>
             <Link
-              href="/proyectos"
+              href="/servicios"
               className="text-sm font-medium text-ink underline decoration-line decoration-2 underline-offset-4 hover:decoration-violet"
             >
-              Ver proyectos recientes
+              Ver todos los servicios
             </Link>
           </motion.div>
 
@@ -69,44 +69,27 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto aspect-square w-full max-w-sm">
-          <motion.svg
-            viewBox="0 0 100 100"
-            className="h-full w-full"
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.path
-              d="M8 8 H54 A46 46 0 0 1 8 54 Z"
-              fill="#5430FF"
-              variants={{
-                hidden: { opacity: 0, x: -18, y: 12, rotate: -8 },
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                  y: 0,
-                  rotate: 0,
-                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 },
-                },
-              }}
-              style={{ transformOrigin: "8px 8px" }}
+        <div className="relative mx-auto w-full max-w-sm">
+          <div className="relative aspect-[537/615] w-full">
+            <motion.img
+              src="/brand/isotype-piece-a.png"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-contain"
+              initial={{ opacity: 0, x: -18, y: 12, rotate: -8 }}
+              animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
             />
-            <motion.path
-              d="M8 54 V92 H50 A38 38 0 0 0 8 54 Z"
-              fill="#1B0E66"
-              variants={{
-                hidden: { opacity: 0, x: 18, y: -12, rotate: 8 },
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                  y: 0,
-                  rotate: 0,
-                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.35 },
-                },
-              }}
-              style={{ transformOrigin: "8px 92px" }}
+            <motion.img
+              src="/brand/isotype-piece-b.png"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-contain"
+              initial={{ opacity: 0, x: 18, y: -12, rotate: 8 }}
+              animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
             />
-          </motion.svg>
+          </div>
           <div className="absolute inset-x-0 -bottom-6 mx-auto h-10 w-3/4 rounded-full bg-violet-soft blur-2xl" />
         </div>
       </Container>

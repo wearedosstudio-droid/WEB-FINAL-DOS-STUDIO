@@ -25,15 +25,6 @@ const config: Config = {
       maxWidth: {
         content: "1240px",
       },
-      keyframes: {
-        assemble: {
-          "0%": { transform: "translate(-14px, 10px) rotate(-6deg)", opacity: "0" },
-          "100%": { transform: "translate(0,0) rotate(0deg)", opacity: "1" },
-        },
-      },
-      animation: {
-        assemble: "assemble 0.9s cubic-bezier(0.16,1,0.3,1) forwards",
-      },
     },
   },
   plugins: [],

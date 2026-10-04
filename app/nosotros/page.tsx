@@ -20,7 +20,7 @@ const values = [
   {
     title: "Un solo interlocutor",
     description:
-      "Un estratega acompaña tu cuenta de punta a punta. Nada se pierde entre equipos ni entre herramientas.",
+      "Hablas directamente con quien ejecuta tu proyecto. No hay capas de account managers entre tú y el trabajo.",
   },
   {
     title: "Diseño que vende",
@@ -38,7 +38,7 @@ const fits = [
   "Tienes un producto o servicio validado y quieres escalar su adquisición de clientes.",
   "Ya facturas en digital, pero sientes que no sabes qué canal realmente te trae resultados.",
   "Manejas varios proveedores o freelancers sueltos y necesitas una sola cabeza estratégica.",
-  "Buscas un equipo que reporte en números de negocio, no solo en métricas de vanidad.",
+  "Buscas un equipo pequeño y accesible, no una agencia grande con procesos lentos.",
 ];
 
 export default function NosotrosPage() {
@@ -55,30 +55,26 @@ export default function NosotrosPage() {
             <div className="max-w-2xl">
               <span className="text-sm font-medium text-violet">Nosotros</span>
               <h1 className="text-balance mt-4 font-display text-4xl font-bold tracking-tight md:text-5xl">
-                El equipo de marketing que tu marca contrataría
-                internamente, sin tener que armarlo
+                Un estudio pequeño, a propósito
               </h1>
               <p className="mt-6 text-lg text-graphite">
-                Dos Studio nació en 2020 de la unión de dos disciplinas que
-                casi nunca conviven bien: la estrategia de negocio y el
-                diseño de marca. Hoy somos un equipo de 14 personas entre
-                estrategas, diseñadores, redactores y especialistas en
-                performance, trabajando para marcas de Latinoamérica y
-                España.
+                Dos Studio nace en 2026 en Barcelona. Somos dos socios
+                fundadores que cubrimos, entre los dos, estrategia, diseño y
+                desarrollo — sin capas intermedias ni equipos tercerizados.
               </p>
               <p className="mt-4 max-w-xl text-graphite">
-                No vendemos horas ni entregables sueltos: construimos un
-                sistema de marketing que se ajusta cada mes según lo que los
-                datos van mostrando.
+                Elegimos mantenernos pequeños porque creemos que así se
+                trabaja mejor: cada cliente habla directamente con quien
+                ejecuta su proyecto, y cada decisión se toma con el contexto
+                completo de la cuenta, no a través de reportes de terceros.
               </p>
             </div>
 
-            <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
+            <div className="mt-14 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-line bg-line">
               {[
-                { value: "14", label: "personas en el equipo" },
-                { value: "2020", label: "año de fundación" },
-                { value: "48", label: "marcas activas" },
-                { value: "6 años", label: "en el mercado" },
+                { value: "2", label: "socios fundadores" },
+                { value: "2026", label: "año de fundación" },
+                { value: "Barcelona", label: "sede del estudio" },
               ].map((stat) => (
                 <div key={stat.label} className="bg-paper p-6">
                   <div className="font-display text-2xl font-bold">

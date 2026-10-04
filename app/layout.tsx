@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import CookieBanner from "@/components/CookieBanner";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s · Dos Studio",
   },
   description:
-    "Dos Studio es una agencia de marketing digital: redes sociales, diseño web, branding, publicidad, SEO, email marketing y automatización, con estrategia detrás de cada decisión.",
+    "Dos Studio es un estudio de marketing digital en Barcelona: redes sociales, diseño web, branding, publicidad, SEO, email marketing y automatización, con estrategia detrás de cada decisión.",
   openGraph: {
     title: "Dos Studio — Marketing digital con criterio",
     description:
@@ -43,7 +43,7 @@ export default function RootLayout({
     <html lang="es" className={`${display.variable} ${body.variable}`}>
       <body>
         {children}
-        <Analytics />
+        <CookieBanner />
       </body>
     </html>
   );

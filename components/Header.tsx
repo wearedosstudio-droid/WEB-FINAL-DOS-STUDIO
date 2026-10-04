@@ -7,10 +7,9 @@ import Container from "./ui/Container";
 
 const links = [
   { href: "/servicios", label: "Servicios" },
-  { href: "/proyectos", label: "Proyectos" },
-  { href: "/nosotros", label: "Nosotros" },
   { href: "/proceso", label: "Proceso" },
-  { href: "/#testimonios", label: "Testimonios" },
+  { href: "/blog", label: "Blog" },
+  { href: "/nosotros", label: "Nosotros" },
 ];
 
 export default function Header() {
@@ -20,7 +19,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur">
       <Container className="flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
-          <Logomark className="h-7 w-7" />
+          <Logomark className="h-7" />
           <span className="font-display text-lg font-bold tracking-tight">
             Dos Studio
           </span>

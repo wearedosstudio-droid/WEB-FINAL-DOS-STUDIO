@@ -12,14 +12,14 @@ export default function About() {
       <Container className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight md:text-4xl">
-            Somos el equipo de marketing que tu marca contrataría
-            internamente, sin tener que armarlo.
+            Un estudio pequeño, a propósito.
           </h2>
           <p className="mt-6 max-w-md text-graphite">
-            Dos Studio nació en 2020 de la unión de dos disciplinas que casi
-            nunca conviven bien: la estrategia de negocio y el diseño de
-            marca. Hoy somos un equipo de 14 personas trabajando para marcas
-            de Latinoamérica y España.
+            Dos Studio nace en 2026 en Barcelona, fundado por dos socios que
+            cubren, entre los dos, estrategia, diseño y desarrollo.
+            Mantenemos el equipo pequeño a propósito: significa que hablas
+            directamente con quien ejecuta tu proyecto, no con una capa de
+            intermediarios.
           </p>
           <Link
             href="/nosotros"
@@ -31,21 +31,21 @@ export default function About() {
 
         <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
           <div className="bg-paper p-8">
-            <div className="font-display text-2xl font-bold">14</div>
+            <div className="font-display text-2xl font-bold">2</div>
             <p className="mt-2 text-xs leading-relaxed text-graphite">
               personas en el equipo
             </p>
           </div>
           <div className="bg-paper p-8">
-            <div className="font-display text-2xl font-bold">2020</div>
+            <div className="font-display text-2xl font-bold">2026</div>
             <p className="mt-2 text-xs leading-relaxed text-graphite">
               año de fundación
             </p>
           </div>
           <div className="bg-paper p-8">
-            <div className="font-display text-2xl font-bold">48</div>
+            <div className="font-display text-2xl font-bold">BCN</div>
             <p className="mt-2 text-xs leading-relaxed text-graphite">
-              marcas activas
+              sede en Barcelona
             </p>
           </div>
         </div>

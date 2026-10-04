@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Container from "@/components/ui/Container";
 import ServiceIcon from "@/components/ui/ServiceIcon";
+import Accordion from "@/components/ui/Accordion";
 import { services, getServiceBySlug } from "@/lib/services";
 
 export function generateStaticParams() {
@@ -64,10 +65,10 @@ export default function ServiceDetailPage({
                     Solicitar una propuesta
                   </Link>
                   <Link
-                    href="/proyectos"
+                    href="/proceso"
                     className="rounded-full border border-line px-7 py-3.5 text-sm font-medium text-ink transition-colors hover:border-violet hover:text-violet"
                   >
-                    Ver proyectos relacionados
+                    Ver cómo trabajamos
                   </Link>
                 </div>
               </div>
@@ -140,6 +141,17 @@ export default function ServiceDetailPage({
                 Ver nuestro proceso completo →
               </Link>
             </div>
+          </Container>
+        </section>
+
+        <section className="border-t border-line py-20">
+          <Container className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <h2 className="text-balance font-display text-2xl font-bold tracking-tight md:text-3xl">
+                Preguntas frecuentes sobre {service.title.toLowerCase()}
+              </h2>
+            </div>
+            <Accordion items={service.faq} />
           </Container>
         </section>
 
