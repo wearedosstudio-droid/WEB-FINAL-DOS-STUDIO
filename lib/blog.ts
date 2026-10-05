@@ -45,7 +45,7 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: "que-revisar-antes-de-rediseñar-tu-web",
+    slug: "que-revisar-antes-de-redisenar-tu-web",
     title: "Qué revisar antes de rediseñar la web de tu marca",
     excerpt:
       "Un rediseño mal planteado puede hacerte perder el poco posicionamiento que ya tenías. Esto es lo primero que hay que mirar.",

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Container from "@/components/ui/Container";
+import PageHero from "@/components/ui/PageHero";
+import CtaBanner from "@/components/CtaBanner";
 import { processSteps } from "@/lib/process";
 
 export const metadata: Metadata = {
-  title: "Proceso de trabajo",
+  title: "Proceso de trabajo y metodología",
+  alternates: { canonical: "/proceso" },
   description:
     "Diagnóstico, estrategia, producción, medición y escalado: el proceso de cinco etapas que aplicamos con cada cliente.",
 };
@@ -15,22 +17,16 @@ export default function ProcesoPage() {
   return (
     <>
       <Header />
-      <main>
-        <section className="border-b border-line py-20">
-          <Container>
-            <div className="max-w-2xl">
-              <span className="text-sm font-medium text-violet">Proceso</span>
-              <h1 className="text-balance mt-4 font-display text-4xl font-bold tracking-tight md:text-5xl">
-                Cinco etapas, el mismo criterio con cada cliente
-              </h1>
-              <p className="mt-6 text-lg text-graphite">
-                No improvisamos por cuenta. Cada proyecto pasa por el mismo
-                proceso — lo que cambia es el contenido de cada etapa, nunca
-                la disciplina detrás.
-              </p>
-            </div>
-          </Container>
-        </section>
+      <main id="contenido">
+        <PageHero
+          eyebrow="Sistema de trabajo"
+          title={
+            <>
+              Cinco etapas. <span className="text-violet-light">El mismo criterio con cada cliente.</span>
+            </>
+          }
+          intro="No improvisamos por cuenta. Cada proyecto pasa por el mismo proceso: lo que cambia es el contenido de cada etapa, nunca la disciplina detrás."
+        />
 
         <section className="py-20">
           <Container>
@@ -77,25 +73,17 @@ export default function ProcesoPage() {
           </Container>
         </section>
 
-        <section className="border-t border-line bg-ink py-20 text-white">
-          <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h2 className="font-display text-2xl font-bold md:text-3xl">
-                ¿Listo para empezar por el diagnóstico?
-              </h2>
-              <p className="mt-3 max-w-md text-white/70">
-                La primera etapa no tiene costo: es la conversación donde
-                entendemos si encajamos.
-              </p>
-            </div>
-            <Link
-              href="/contacto"
-              className="whitespace-nowrap rounded-full bg-violet px-7 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white hover:text-ink"
-            >
-              Agendar diagnóstico
-            </Link>
-          </Container>
-        </section>
+        <CtaBanner
+          eyebrow="Etapa 01"
+          title={
+            <>
+              Empecemos por el diagnóstico<span className="text-violet-light">.</span>
+            </>
+          }
+          text="Una llamada de 30 minutos o, si necesitas un análisis a fondo, una auditoría: descontable si contratas un servicio en los 60 días siguientes."
+          primary={{ href: "/contacto", label: "Agendar una llamada" }}
+          secondary={{ href: "/servicios#auditorias", label: "Ver auditorías" }}
+        />
       </main>
       <Footer />
     </>

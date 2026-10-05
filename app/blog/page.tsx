@@ -3,11 +3,13 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Container from "@/components/ui/Container";
+import PageHero from "@/components/ui/PageHero";
 import AbstractVisual from "@/components/ui/AbstractVisual";
 import { blogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Blog de marketing digital",
+  alternates: { canonical: "/blog" },
   description:
     "Notas prácticas sobre estrategia, SEO, diseño web y automatización, escritas por el equipo de Dos Studio.",
 };
@@ -24,22 +26,16 @@ export default function BlogPage() {
   return (
     <>
       <Header />
-      <main>
-        <section className="border-b border-line py-20">
-          <Container>
-            <div className="max-w-2xl">
-              <span className="text-sm font-medium text-violet">Blog</span>
-              <h1 className="text-balance mt-4 font-display text-4xl font-bold tracking-tight md:text-5xl">
-                Ideas sobre marketing digital, sin relleno
-              </h1>
-              <p className="mt-6 text-lg text-graphite">
-                Notas prácticas sobre estrategia, SEO, diseño y
-                automatización, escritas por el mismo equipo que lleva las
-                cuentas.
-              </p>
-            </div>
-          </Container>
-        </section>
+      <main id="contenido">
+        <PageHero
+          eyebrow="Blog"
+          title={
+            <>
+              Ideas sobre marketing digital, <span className="text-violet-light">sin relleno.</span>
+            </>
+          }
+          intro="Notas prácticas sobre estrategia, SEO, diseño y automatización, escritas por el mismo equipo que lleva las cuentas."
+        />
 
         <section className="py-20">
           <Container>

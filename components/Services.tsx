@@ -7,24 +7,28 @@ import Container from "./ui/Container";
 import ServiceIcon from "./ui/ServiceIcon";
 import Reveal from "./ui/Reveal";
 import { services } from "@/lib/services";
+import { categories, priceSuffix, pricedCategoryBySlug, startingPrice } from "@/lib/portfolio";
 
 export default function Services() {
   const [active, setActive] = useState(0);
   const service = services[active];
+  const categoryId = pricedCategoryBySlug[service.slug];
+  const fromPlan = categoryId ? startingPrice(categoryId) : undefined;
+  const category = categories.find((c) => c.id === categoryId);
 
   return (
     <section id="servicios" className="bg-[#F7F5FF] py-24 md:py-32">
       <Container>
         <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <span className="eyebrow">Soluciones</span>
+            <span className="eyebrow">Servicios</span>
             <h2 className="section-title mt-6">
-              Todo lo que necesita tu marca para crecer en digital
+              Ocho disciplinas, <span className="text-violet">un mismo sistema.</span>
             </h2>
           </div>
           <p className="max-w-sm text-graphite">
-            Ocho disciplinas que trabajamos por separado o como un solo
-            sistema, según en qué punto esté tu negocio.
+            Contrátalas por separado o combinadas, según en qué punto esté tu
+            negocio. Todas responden a la misma estrategia.
           </p>
         </Reveal>
 
@@ -127,20 +131,44 @@ export default function Services() {
                 </div>
 
                 <div className="flex flex-col gap-4 self-start">
-                  <div className="bg-brand-glow rounded-3xl p-7 text-white">
-                    <div className="font-display text-5xl font-bold">{service.stat.value}</div>
-                    <p className="mt-3 text-sm leading-relaxed text-white/75">
-                      {service.stat.label}
-                    </p>
-                  </div>
-                  <div className="rounded-3xl border border-line p-7">
-                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-violet">
-                      Ideal para
+                  <div className="rounded-3xl bg-midnight p-7 text-white">
+                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-violet-light">
+                      Cómo lo trabajamos
                     </span>
-                    <p className="mt-3 text-sm leading-relaxed text-graphite">
-                      {service.idealFor}
-                    </p>
+                    <ol className="mt-5 space-y-4">
+                      {service.steps.map((step, i) => (
+                        <li key={step.title} className="flex gap-3">
+                          <span className="font-mono text-xs text-white/50">0{i + 1}</span>
+                          <span className="text-sm font-semibold">{step.title}</span>
+                        </li>
+                      ))}
+                    </ol>
                   </div>
+                  {fromPlan && category ? (
+                    <Link
+                      href={`/servicios#${category.id}`}
+                      className="group rounded-3xl border border-line p-7 transition-colors hover:border-violet"
+                    >
+                      <span className="text-xs font-semibold uppercase tracking-[0.12em] text-violet">
+                        Servicio paquetizado
+                      </span>
+                      <span className="mt-3 block text-sm text-graphite">Desde</span>
+                      <span className="block font-display text-3xl font-bold">
+                        {fromPlan.price}
+                        <span className="ml-1 text-sm font-normal text-graphite">{priceSuffix(fromPlan)}</span>
+                      </span>
+                      <span className="link-arrow mt-4">
+                        Ver planes <span aria-hidden="true">→</span>
+                      </span>
+                    </Link>
+                  ) : (
+                    <div className="rounded-3xl border border-line p-7">
+                      <span className="text-xs font-semibold uppercase tracking-[0.12em] text-violet">
+                        Ideal para
+                      </span>
+                      <p className="mt-3 text-sm leading-relaxed text-graphite">{service.idealFor}</p>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             </AnimatePresence>

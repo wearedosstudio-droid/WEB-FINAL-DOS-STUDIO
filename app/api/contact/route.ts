@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, company, service, message } = body ?? {};
+    const { name, email, company, service, plan, message } = body ?? {};
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
     //   from: "Dos Studio <web@dosstudio.com>",
     //   to: "wearedosstudio@gmail.com",
     //   subject: `Nuevo contacto: ${name}`,
-    //   text: `Empresa: ${company}\nServicio: ${service}\nEmail: ${email}\n\n${message}`,
+    //   text: `Empresa: ${company}\nServicio: ${service}\nPlan: ${plan}\nEmail: ${email}\n\n${message}`,
     // });
     //
     // Mientras tanto, dejamos constancia en los logs del servidor:
@@ -29,6 +29,7 @@ export async function POST(request: Request) {
       email,
       company,
       service,
+      plan,
       message,
     });
 

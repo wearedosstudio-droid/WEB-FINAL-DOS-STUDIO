@@ -45,7 +45,7 @@ export default function BlogPostPage({
   return (
     <>
       <Header />
-      <main>
+      <main id="contenido">
         <section className="border-b border-line py-16">
           <Container>
             <Link

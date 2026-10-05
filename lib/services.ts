@@ -6,7 +6,6 @@ export type Service = {
   description: string;
   deliverables: string[];
   idealFor: string;
-  stat: { value: string; label: string };
   steps: { title: string; description: string }[];
   faq: { question: string; answer: string }[];
 };
@@ -29,7 +28,6 @@ export const services: Service[] = [
     ],
     idealFor:
       "Marcas que ya tienen presencia en redes pero necesitan constancia, dirección creativa y una lectura clara de qué está funcionando.",
-    stat: { value: "3+", label: "plataformas gestionadas de forma nativa, no replicada" },
     steps: [
       { title: "Auditoría de canales", description: "Revisamos tu historial, tu competencia directa y qué formatos ya funcionan con tu audiencia." },
       { title: "Línea editorial", description: "Definimos pilares de contenido, tono de voz y una cadencia de publicación sostenible." },
@@ -58,7 +56,6 @@ export const services: Service[] = [
     ],
     idealFor:
       "Negocios que necesitan un sitio nuevo, o que están perdiendo leads por un sitio lento, desactualizado o difícil de mantener.",
-    stat: { value: "100%", label: "responsive y optimizado para velocidad de carga" },
     steps: [
       { title: "Descubrimiento", description: "Entendemos tu producto, tu proceso de venta y qué debe lograr el sitio en los primeros 3 meses." },
       { title: "Diseño y prototipo", description: "Diseñamos cada página clave y la validamos contigo antes de escribir una sola línea de código." },
@@ -87,7 +84,6 @@ export const services: Service[] = [
     ],
     idealFor:
       "Marcas naciendo desde cero, o negocios en crecimiento cuya identidad actual ya no representa lo que realmente venden.",
-    stat: { value: "360°", label: "sistema de marca aplicado a todos tus canales" },
     steps: [
       { title: "Estrategia", description: "Entrevistas, análisis de competencia y definición de posicionamiento antes de diseñar nada." },
       { title: "Sistema de marca", description: "Construimos la identidad visual y verbal completa, con variaciones para cada uso real." },
@@ -116,7 +112,6 @@ export const services: Service[] = [
     ],
     idealFor:
       "Marcas que ya venden en digital y necesitan que la inversión publicitaria sea predecible y rentable, no una caja negra.",
-    stat: { value: "Semanal", label: "ritmo de optimización de campañas activas" },
     steps: [
       { title: "Configuración", description: "Instalamos tracking correcto y estructuramos campañas desde cero o auditamos las existentes." },
       { title: "Pruebas creativas", description: "Lanzamos variaciones de anuncios y públicos para encontrar qué combinación realmente rinde." },
@@ -145,7 +140,6 @@ export const services: Service[] = [
     ],
     idealFor:
       "Negocios que dependen demasiado de canales pagos y quieren un canal de adquisición propio a mediano plazo.",
-    stat: { value: "3 en 1", label: "SEO técnico, de contenido y de autoridad trabajados a la vez" },
     steps: [
       { title: "Auditoría", description: "Revisamos la salud técnica del sitio y dónde estás perdiendo posiciones frente a tu competencia." },
       { title: "Arquitectura y contenido", description: "Reestructuramos lo necesario y publicamos contenido pensado para intención de búsqueda real." },
@@ -174,7 +168,6 @@ export const services: Service[] = [
     ],
     idealFor:
       "Ecommerce y negocios con base de clientes propia que hoy no está siendo aprovechada más allá de un newsletter esporádico.",
-    stat: { value: "24/7", label: "flujos automáticos trabajando sin intervención manual" },
     steps: [
       { title: "Segmentación", description: "Ordenamos tu base según comportamiento real de compra e interés." },
       { title: "Automatizaciones", description: "Construimos los flujos que trabajan solos: bienvenida, recuperación, fidelización." },
@@ -203,7 +196,6 @@ export const services: Service[] = [
     ],
     idealFor:
       "Equipos comerciales que reciben leads pero los gestionan manualmente, con riesgo de perder oportunidades por demora.",
-    stat: { value: "0", label: "pasos manuales entre que llega un lead y se le hace seguimiento" },
     steps: [
       { title: "Mapeo", description: "Revisamos tu proceso actual de principio a fin y detectamos dónde se pierden leads." },
       { title: "Construcción de flujos", description: "Conectamos tus herramientas para automatizar asignación, seguimiento y alertas." },
@@ -232,7 +224,6 @@ export const services: Service[] = [
     ],
     idealFor:
       "Equipos con varios canales activos (y a veces varias agencias) que necesitan una sola cabeza estratégica ordenando el conjunto.",
-    stat: { value: "90 días", label: "horizonte de cada plan estratégico trimestral" },
     steps: [
       { title: "Diagnóstico", description: "Revisamos cada canal activo, su rendimiento real y dónde hay solapamiento o vacíos." },
       { title: "Plan trimestral", description: "Definimos prioridades, KPIs y un plan de trabajo claro para los siguientes 90 días." },

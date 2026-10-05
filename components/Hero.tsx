@@ -1,35 +1,102 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Container from "./ui/Container";
 import PlatformMarquee from "./PlatformMarquee";
 
-const words = ["estrategia", "datos", "diseño", "contenido"];
-
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const chips = [
-  { label: "Estrategia", className: "-left-10 top-[14%]", delay: 0.7 },
-  { label: "Performance", className: "-right-8 top-[46%]", delay: 0.85 },
-  { label: "Contenido", className: "-left-6 bottom-[12%]", delay: 1 },
-];
+/** Los siete ejes del ecosistema digital que trabaja Dos Studio. */
+const nodes = ["Estrategia", "Web", "SEO", "Contenido", "Marketing", "Datos", "Crecimiento"];
+
+function EcosystemDiagram() {
+  const radius = 42; // % del contenedor
+  return (
+    <div className="relative mx-auto aspect-square w-full max-w-[460px]" aria-hidden="true">
+      {/* órbitas */}
+      <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
+        <circle cx="50" cy="50" r={radius} fill="none" stroke="rgba(255,255,255,0.14)" strokeWidth="0.25" />
+        <circle
+          cx="50"
+          cy="50"
+          r="29"
+          fill="none"
+          stroke="rgba(140,116,255,0.35)"
+          strokeWidth="0.25"
+          strokeDasharray="1 1.6"
+          className="origin-center animate-[spin_60s_linear_infinite] motion-reduce:animate-none"
+        />
+        {nodes.map((_, i) => {
+          const a = (i / nodes.length) * Math.PI * 2 - Math.PI / 2;
+          return (
+            <motion.line
+              key={i}
+              x1="50"
+              y1="50"
+              x2={50 + Math.cos(a) * radius}
+              y2={50 + Math.sin(a) * radius}
+              stroke="rgba(255,255,255,0.12)"
+              strokeWidth="0.25"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.9, delay: 0.4 + i * 0.06, ease }}
+            />
+          );
+        })}
+      </svg>
+
+      {/* núcleo: isotipo */}
+      <div className="absolute left-1/2 top-1/2 h-[34%] w-[34%] -translate-x-1/2 -translate-y-1/2">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, ease, delay: 0.15 }}
+          className="flex h-full w-full items-center justify-center rounded-[28%] bg-paper shadow-[0_30px_80px_-20px_rgba(84,48,255,0.65)]"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/isotype.png" alt="" width={537} height={615} className="h-[52%] w-auto" />
+        </motion.div>
+      </div>
+
+      {/* nodos */}
+      {nodes.map((label, i) => {
+        const a = (i / nodes.length) * Math.PI * 2 - Math.PI / 2;
+        const left = 50 + Math.cos(a) * radius;
+        const top = 50 + Math.sin(a) * radius;
+        const isGrowth = label === "Crecimiento";
+        return (
+          <span
+            key={label}
+            style={{ left: `${left}%`, top: `${top}%` }}
+            className="absolute -translate-x-1/2 -translate-y-1/2"
+          >
+            <motion.span
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease, delay: 0.7 + i * 0.08 }}
+              className={`block whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold ${
+                isGrowth
+                  ? "bg-violet text-white shadow-[0_12px_30px_-10px_rgba(84,48,255,0.9)]"
+                  : "border border-white/15 bg-midnight text-white/90"
+              }`}
+            >
+              {label}
+            </motion.span>
+          </span>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function Hero() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const id = window.setInterval(() => setIndex((i) => (i + 1) % words.length), 2400);
-    return () => window.clearInterval(id);
-  }, []);
-
   return (
     <section id="top" className="px-3 pb-3 md:px-4">
       <div className="bg-brand-glow relative overflow-hidden rounded-[2rem] text-white md:rounded-[2.5rem]">
         <div className="bg-grid-light pointer-events-none absolute inset-0 [mask-image:radial-gradient(70%_70%_at_50%_30%,black,transparent)]" />
 
-        <Container className="relative grid items-center gap-14 pb-16 pt-16 md:grid-cols-[1.2fr_0.8fr] md:pb-20 md:pt-24">
+        <Container className="relative grid items-center gap-14 pb-16 pt-16 md:pb-24 md:pt-24 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
             <motion.span
               initial={{ opacity: 0, y: 12 }}
@@ -37,100 +104,62 @@ export default function Hero() {
               transition={{ duration: 0.6, ease }}
               className="eyebrow-dark"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-violet-soft" />
-              Estudio de marketing digital · Barcelona
+              <span className="h-1.5 w-1.5 rounded-full bg-violet-light" />
+              Agencia de marketing digital · Barcelona
             </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.05, ease }}
-              className="mt-7 font-display text-[2.75rem] font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-[5.25rem]"
+              transition={{ duration: 0.8, delay: 0.05, ease }}
+              className="mt-7 text-balance font-display text-[2.7rem] font-bold leading-[1.02] tracking-tight sm:text-6xl xl:text-[5rem]"
             >
-              Hacemos crecer marcas con{" "}
-              <span className="relative inline-flex overflow-hidden pb-1 align-bottom">
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.span
-                    key={words[index]}
-                    initial={{ y: "100%", opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: "-100%", opacity: 0 }}
-                    transition={{ duration: 0.45, ease }}
-                    className="inline-block bg-gradient-to-r from-white to-violet-soft/70 bg-clip-text text-transparent"
-                  >
-                    {words[index]}.
-                  </motion.span>
-                </AnimatePresence>
-              </span>
+              Construimos y hacemos crecer tu{" "}
+              <span className="text-violet-light">ecosistema digital.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15, ease }}
-              className="mt-7 max-w-lg text-lg leading-relaxed text-white/75"
+              transition={{ duration: 0.8, delay: 0.15, ease }}
+              className="mt-7 max-w-xl text-lg leading-relaxed text-white/75"
             >
-              Estrategia, diseño y performance bajo un mismo equipo. Dos socios
-              que acompañan cada cuenta de principio a fin, con métricas reales
-              y sin intermediarios.
+              Estrategia, web, SEO, contenido y datos trabajando como un solo
+              sistema. Dos socios al frente de cada proyecto y servicios con
+              precio y alcance cerrados antes de empezar.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25, ease }}
+              transition={{ duration: 0.8, delay: 0.25, ease }}
               className="mt-10 flex flex-wrap items-center gap-3"
             >
               <Link href="/contacto" className="btn-light">
-                Cuéntanos tu proyecto <span aria-hidden="true">→</span>
+                Agendar una llamada <span aria-hidden="true">→</span>
               </Link>
               <Link href="/servicios" className="btn-ghost-light">
-                Ver servicios
+                Ver servicios y tarifas
               </Link>
             </motion.div>
+
+            {/* En móvil, los ejes del ecosistema como lista compacta */}
+            <ul className="mt-12 flex flex-wrap gap-2 lg:hidden" aria-label="Qué trabajamos">
+              {nodes.map((n) => (
+                <li
+                  key={n}
+                  className={`rounded-full px-3.5 py-1.5 text-xs font-semibold ${
+                    n === "Crecimiento" ? "bg-violet text-white" : "border border-white/15 text-white/80"
+                  }`}
+                >
+                  {n}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="relative mx-auto hidden w-full max-w-md md:block">
-            <motion.div
-              initial={{ opacity: 0, y: 24, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.9, ease, delay: 0.1 }}
-              className="relative aspect-square rounded-[2.5rem] bg-paper p-16 shadow-[0_40px_120px_-30px_rgba(10,10,11,0.6)]"
-            >
-              <div className="relative mx-auto aspect-[537/615] h-full animate-float">
-                <motion.img
-                  src="/brand/isotype-piece-a.png"
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute inset-0 h-full w-full object-contain"
-                  initial={{ opacity: 0, x: -24, y: 16, rotate: -10 }}
-                  animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
-                  transition={{ duration: 0.9, ease, delay: 0.35 }}
-                />
-                <motion.img
-                  src="/brand/isotype-piece-b.png"
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute inset-0 h-full w-full object-contain"
-                  initial={{ opacity: 0, x: 24, y: -16, rotate: 10 }}
-                  animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
-                  transition={{ duration: 0.9, ease, delay: 0.55 }}
-                />
-              </div>
-            </motion.div>
-
-            {chips.map((chip) => (
-              <motion.span
-                key={chip.label}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, ease, delay: chip.delay }}
-                className={`absolute ${chip.className} flex items-center gap-2 rounded-full bg-paper px-4 py-2.5 text-sm font-semibold text-ink shadow-[0_16px_40px_-12px_rgba(10,10,11,0.5)]`}
-              >
-                <span className="h-2 w-2 rounded-full bg-violet" />
-                {chip.label}
-              </motion.span>
-            ))}
+          <div className="hidden lg:block">
+            <EcosystemDiagram />
           </div>
         </Container>
 

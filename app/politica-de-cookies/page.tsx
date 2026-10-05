@@ -12,7 +12,7 @@ export default function PoliticaCookiesPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="contenido">
         <section className="py-20">
           <Container>
             <div className="mx-auto max-w-2xl">

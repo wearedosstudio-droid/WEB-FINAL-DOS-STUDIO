@@ -12,49 +12,49 @@ Sitio multipágina — cada sección principal vive en su propia ruta:
 ```
 dos-studio/
 ├── app/
-│   ├── api/contact/route.ts        # Endpoint del formulario de contacto
+│   ├── page.tsx                    # Home: hero → propuesta de valor → problema → Dos Studio →
+│   │                               # sistema → servicios → diferenciación → FAQ → accesos → CTA
 │   ├── servicios/
-│   │   ├── page.tsx                # Listado completo de los 8 servicios
-│   │   └── [slug]/page.tsx         # Página individual de cada servicio (con FAQ)
-│   ├── proceso/page.tsx            # Las 5 etapas del proceso, en profundidad
-│   ├── blog/
-│   │   ├── page.tsx                # Listado de artículos
-│   │   └── [slug]/page.tsx         # Artículo individual
-│   ├── nosotros/page.tsx           # Sobre el equipo (2 fundadores, 2026, Barcelona)
-│   ├── contacto/page.tsx           # Formulario de contacto
-│   ├── aviso-legal/page.tsx        # Aviso legal (LSSI-CE)
-│   ├── politica-de-privacidad/page.tsx  # Política de privacidad (RGPD)
-│   ├── politica-de-cookies/page.tsx     # Política de cookies
-│   ├── icon.png                    # Favicon (isotipo real de marca)
-│   ├── layout.tsx                  # Layout raíz, fuentes, metadata SEO y banner de cookies
-│   └── page.tsx                    # Home: resumen de cada sección + CTAs
+│   │   ├── page.tsx                # Servicios paquetizados (planes y tarifas del Portfolio 2026)
+│   │   └── [slug]/page.tsx         # Página de cada disciplina (con FAQ y enlace a sus tarifas)
+│   ├── portfolio/page.tsx          # Portfolio 2026 completo como documento web (+ descarga PDF)
+│   ├── proceso/ · nosotros/ · blog/ · contacto/
+│   ├── aviso-legal/ · politica-de-privacidad/ · politica-de-cookies/
+│   ├── api/contact/route.ts        # Endpoint del formulario (recibe también el plan elegido)
+│   ├── sitemap.ts · robots.ts      # sitemap.xml y robots.txt generados
+│   ├── opengraph-image.tsx         # Imagen para redes sociales
+│   └── layout.tsx                  # Fuentes, metadata SEO, JSON-LD y banner de cookies
 ├── lib/
-│   ├── services.ts                 # Datos de los 8 servicios (incluye FAQ por servicio)
-│   ├── process.ts                  # Datos de las 5 etapas del proceso
-│   ├── blog.ts                     # Artículos del blog
-│   └── faq.ts                      # Preguntas frecuentes generales (Home)
+│   ├── portfolio.ts                # ⭐ Fuente única de la oferta comercial (Portfolio 2026)
+│   ├── site.ts                     # URL del sitio y datos de contacto
+│   ├── services.ts                 # Las 8 disciplinas (contenido de /servicios/[slug])
+│   ├── process.ts · blog.ts · faq.ts
 ├── components/
-│   ├── ui/
-│   │   ├── Arc.tsx                 # Motivo decorativo (cuarto de círculo)
-│   │   ├── Container.tsx           # Wrapper de ancho máximo
-│   │   ├── Logomark.tsx            # Isotipo real de marca (PNG con transparencia)
-│   │   ├── ServiceIcon.tsx         # Iconos de cada servicio, por slug
-│   │   ├── AbstractVisual.tsx      # Composiciones visuales en la paleta de marca
-│   │   ├── Accordion.tsx           # Desplegable usado en todas las FAQ
-│   │   └── Reveal.tsx              # Animación de aparición al hacer scroll
-│   ├── Header.tsx / Footer.tsx     # Header con mega menú de servicios
-│   ├── Pillars.tsx                 # Bloques de propuesta de valor (home)
-│   ├── PlatformMarquee.tsx         # Cinta de plataformas con las que trabajamos
-│   ├── Hero.tsx / About.tsx / Services.tsx / Process.tsx
-│   ├── BlogPreview.tsx / FaqSection.tsx / CtaBanner.tsx
-│   ├── ContactForm.tsx
-│   └── CookieBanner.tsx            # Aviso de cookies (aceptar/rechazar)
-├── public/
-│   └── brand/                      # Isotipo real recortado con transparencia
-├── tailwind.config.ts
-├── next.config.js
-└── package.json
+│   ├── pricing/                    # PlanCard, PackCard, PacksComparison, PlanTable, SectionNav
+│   ├── ui/                         # PageHero, SectionHeading, Callout, Reveal, Wordmark, Accordion…
+│   ├── Header.tsx / Footer.tsx     # Mega menú de servicios · footer con Servicios paquetizados y Portfolio
+│   ├── Hero.tsx / ValueProposition.tsx / Problems.tsx / About.tsx / Process.tsx
+│   ├── Services.tsx / Differentiators.tsx / FaqSection.tsx / ExploreCards.tsx / CtaBanner.tsx
+│   ├── ContactForm.tsx             # Admite ?plan=CODIGO para preseleccionar un plan
+│   └── CookieBanner.tsx
+└── public/
+    ├── brand/                      # Isotipo de marca
+    └── portfolio/                  # PDF oficial del Portfolio 2026
 ```
+
+## Cómo actualizar precios o servicios
+
+Toda la oferta comercial (códigos, precios, cuotas, compromisos, packs y
+condiciones) vive en `lib/portfolio.ts`, transcrita del documento
+**Dos Studio · Portfolio 2026**. Tanto `/servicios` como `/portfolio` leen de
+ahí, así que un cambio de tarifa se hace una sola vez. Si se publica una nueva
+versión del PDF, sustituye también `public/portfolio/dos-studio-portfolio-2026.pdf`.
+
+## Dominio
+
+La URL usada en SEO (canonical, sitemap, Open Graph) se toma de la variable
+`NEXT_PUBLIC_SITE_URL` (por defecto `https://web10-seven.vercel.app`). Cuando
+tengáis dominio propio, añádela en Vercel → Settings → Environment Variables.
 
 ## Datos de contacto
 

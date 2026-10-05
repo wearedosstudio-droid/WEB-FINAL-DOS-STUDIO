@@ -6,7 +6,9 @@ import Footer from "@/components/Footer";
 import Container from "@/components/ui/Container";
 import ServiceIcon from "@/components/ui/ServiceIcon";
 import Accordion from "@/components/ui/Accordion";
+import CtaBanner from "@/components/CtaBanner";
 import { services, getServiceBySlug } from "@/lib/services";
+import { categories, priceSuffix, pricedCategoryBySlug, startingPrice } from "@/lib/portfolio";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -20,8 +22,9 @@ export function generateMetadata({
   const service = getServiceBySlug(params.slug);
   if (!service) return {};
   return {
-    title: service.title,
+    title: `${service.title} en Barcelona`,
     description: service.summary,
+    alternates: { canonical: `/servicios/${service.slug}` },
   };
 }
 
@@ -34,15 +37,17 @@ export default function ServiceDetailPage({
   if (!service) notFound();
 
   const otherServices = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+  const category = categories.find((c) => c.id === pricedCategoryBySlug[service.slug]);
+  const fromPlan = category ? startingPrice(category.id) : undefined;
 
   return (
     <>
       <Header />
-      <main>
+      <main id="contenido">
         <section className="border-b border-line py-20">
           <Container>
             <Link
-              href="/servicios"
+              href="/#servicios"
               className="text-sm text-graphite transition-colors hover:text-ink"
             >
               ← Todos los servicios
@@ -73,14 +78,40 @@ export default function ServiceDetailPage({
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-line bg-violet-soft/60 p-6">
-                <div className="font-display text-3xl font-bold text-ink">
-                  {service.stat.value}
-                </div>
-                <p className="mt-1 max-w-[220px] text-xs text-graphite">
-                  {service.stat.label}
-                </p>
-              </div>
+              {fromPlan && category ? (
+                <Link
+                  href={`/servicios#${category.id}`}
+                  className="group rounded-3xl bg-midnight p-7 text-white transition-transform duration-500 hover:-translate-y-1"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-[0.12em] text-violet-light">
+                    Servicio paquetizado
+                  </span>
+                  <span className="mt-3 block text-sm text-white/60">Desde</span>
+                  <span className="block font-display text-4xl font-bold">
+                    {fromPlan.price}
+                    <span className="ml-1 text-sm font-normal text-white/60">{priceSuffix(fromPlan)}</span>
+                  </span>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold">
+                    Ver planes y tarifas
+                    <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </span>
+                </Link>
+              ) : (
+                <Link
+                  href="/servicios"
+                  className="group rounded-3xl border border-line bg-violet-soft/60 p-7 transition-colors hover:border-violet"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-[0.12em] text-violet">
+                    Presupuesto a medida
+                  </span>
+                  <p className="mt-3 max-w-[240px] text-sm text-graphite">
+                    Lo combinamos con nuestros servicios paquetizados según tu objetivo.
+                  </p>
+                  <span className="link-arrow mt-4">
+                    Ver servicios paquetizados <span aria-hidden="true">→</span>
+                  </span>
+                </Link>
+              )}
             </div>
           </Container>
         </section>
@@ -182,25 +213,17 @@ export default function ServiceDetailPage({
           </Container>
         </section>
 
-        <section className="border-t border-line bg-ink py-20 text-white">
-          <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h2 className="font-display text-2xl font-bold md:text-3xl">
-                ¿Empezamos con {service.title.toLowerCase()}?
-              </h2>
-              <p className="mt-3 max-w-md text-white/70">
-                Cuéntanos tu objetivo y te respondemos en menos de 24 horas
-                hábiles con los próximos pasos.
-              </p>
-            </div>
-            <Link
-              href="/contacto"
-              className="whitespace-nowrap rounded-full bg-violet px-7 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white hover:text-ink"
-            >
-              Solicitar una propuesta
-            </Link>
-          </Container>
-        </section>
+        <CtaBanner
+          eyebrow={service.title}
+          title={
+            <>
+              ¿Empezamos<span className="text-violet-light">?</span>
+            </>
+          }
+          text="Cuéntanos tu objetivo. Empezamos con una llamada de 30 minutos para entender tu negocio y decirte por dónde empezaríamos."
+          primary={{ href: "/contacto", label: "Solicitar una propuesta" }}
+          secondary={{ href: "/servicios", label: "Ver servicios y tarifas" }}
+        />
       </main>
       <Footer />
     </>

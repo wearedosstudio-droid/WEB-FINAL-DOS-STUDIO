@@ -9,11 +9,14 @@ const config: Config = {
     extend: {
       colors: {
         ink: "#0A0A0B",
+        // Fondo oscuro del Portfolio 2026 (portada y cabeceras)
+        midnight: "#14122A",
         paper: "#FFFFFF",
         violet: {
           DEFAULT: "#5430FF",
           deep: "#1B0E66",
           soft: "#EDE9FF",
+          light: "#8C74FF",
         },
         graphite: "#5B5B66",
         line: "#E4E2EC",
