@@ -2,6 +2,12 @@ import Link from "next/link";
 import Logomark from "./ui/Logomark";
 import Container from "./ui/Container";
 import { services } from "@/lib/services";
+import { contact } from "@/lib/site";
+
+const commercialLinks = [
+  { href: "/servicios", label: "Servicios paquetizados" },
+  { href: "/portfolio", label: "Portfolio" },
+];
 
 const agencyLinks = [
   { href: "/nosotros", label: "Nosotros" },
@@ -27,8 +33,9 @@ export default function Footer() {
               <span className="font-display text-xl font-bold">Dos Studio</span>
             </Link>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/60">
-              Estudio de marketing digital en Barcelona: estrategia,
-              performance y diseño de marca para negocios en crecimiento.
+              Agencia de marketing digital en Barcelona. Construimos y hacemos
+              crecer el ecosistema digital de tu empresa: estrategia, web, SEO,
+              contenido y datos.
             </p>
             <Link
               href="/contacto"
@@ -39,9 +46,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
               Servicios
-            </h4>
+            </h2>
             <ul className="mt-5 space-y-3">
               {services.map((service) => (
                 <li key={service.slug}>
@@ -54,12 +61,27 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            <ul className="mt-6 space-y-3 border-t border-white/10 pt-6">
+              {commercialLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="group inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-violet-light"
+                  >
+                    {link.label}
+                    <span aria-hidden="true" className="text-violet-light transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
               Agencia
-            </h4>
+            </h2>
             <ul className="mt-5 space-y-3">
               {agencyLinks.map((link) => (
                 <li key={link.label}>
@@ -75,26 +97,23 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/40">
               Contacto
-            </h4>
+            </h2>
             <ul className="mt-5 space-y-3 text-sm text-white/75">
               <li>
-                <a href="mailto:wearedosstudio@gmail.com" className="hover:text-white">
-                  wearedosstudio@gmail.com
+                <a href={`mailto:${contact.email}`} className="hover:text-white">
+                  {contact.email}
                 </a>
               </li>
-              <li>
-                <a href="tel:+34684342984" className="hover:text-white">
-                  +34 684 34 29 84
-                </a>
-              </li>
-              <li>
-                <a href="tel:+34635372754" className="hover:text-white">
-                  +34 635 37 27 54
-                </a>
-              </li>
-              <li>Barcelona, España</li>
+              {contact.phones.map((p) => (
+                <li key={p.href}>
+                  <a href={p.href} className="hover:text-white">
+                    {p.label}
+                  </a>
+                </li>
+              ))}
+              <li>{contact.city}</li>
             </ul>
           </div>
         </Container>
@@ -104,7 +123,7 @@ export default function Footer() {
             aria-hidden="true"
             className="select-none bg-gradient-to-b from-violet to-violet/0 bg-clip-text font-display text-[18vw] font-bold leading-[0.8] tracking-tighter text-transparent lg:text-[13.5rem]"
           >
-            Dos Studio
+            Dos Studio.
           </div>
         </Container>
 

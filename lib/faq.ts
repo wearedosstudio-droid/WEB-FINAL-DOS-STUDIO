@@ -1,27 +1,38 @@
+/** Preguntas frecuentes de la Home. Las respuestas comerciales salen del Portfolio 2026. */
 export const generalFaq = [
   {
-    question: "¿Con qué tamaño de negocio trabajan?",
+    question: "¿Cuánto cuesta trabajar con Dos Studio?",
     answer:
-      "Trabajamos principalmente con pequeñas y medianas empresas que ya tienen un producto o servicio validado y buscan ordenar o escalar su presencia digital. Si no estamos seguros de encajar bien con tu proyecto, te lo decimos en la primera conversación.",
+      "Todos nuestros servicios están paquetizados, con precio y alcance cerrados (precios sin IVA). Por ejemplo, las auditorías van de 290 € a 690 € y los Packs Dos Studio de 849 € a 2.490 € al mes. Tienes todos los planes en la página de Servicios paquetizados.",
   },
   {
-    question: "¿Puedo contratar un solo servicio o tengo que contratar un paquete?",
+    question: "¿Por dónde empiezo?",
     answer:
-      "Puedes contratar cualquiera de los ocho servicios por separado. Muchos clientes empiezan con uno solo y suman otros a medida que lo necesitan.",
+      "Con una llamada de 30 minutos para entender tu negocio y decirte por dónde empezaríamos. Si necesitas un diagnóstico, la auditoría es descontable: si en los 60 días siguientes contratas un servicio, su importe se descuenta del primer pago.",
+  },
+  {
+    question: "¿Hay permanencia?",
+    answer:
+      "Depende del servicio: los proyectos únicos no tienen compromiso, el mantenimiento es mensual, redes y estrategia tienen 3 meses, SEO y packs 6 meses, y el hosting es anual. Cumplido el compromiso, los servicios pasan a mensuales y las bajas se comunican con 30 días de antelación.",
+  },
+  {
+    question: "¿De quién son la web, los contenidos y las cuentas?",
+    answer:
+      "Tuyos. La web, los contenidos y las cuentas son del cliente una vez abonados, y los accesos se entregan al finalizar el proyecto.",
+  },
+  {
+    question: "¿La inversión en publicidad está incluida?",
+    answer:
+      "No. La inversión publicitaria (por ejemplo, el presupuesto de anuncios en redes) no está incluida en ningún plan y se paga aparte.",
   },
   {
     question: "¿Cómo es la comunicación durante el proyecto?",
     answer:
-      "Tienes contacto directo con los dos fundadores, sin intermediarios ni capas de account managers. Esa es una de las razones por las que mantenemos el equipo pequeño.",
+      "Tienes contacto directo con los dos fundadores, sin intermediarios ni capas de account managers. Es una de las razones por las que mantenemos el equipo pequeño.",
   },
   {
     question: "¿Trabajan con clientes fuera de Barcelona?",
     answer:
       "Sí. Nuestra base está en Barcelona, pero trabajamos de forma remota con marcas en el resto de España y, puntualmente, con clientes fuera del país.",
-  },
-  {
-    question: "¿Qué pasa si algo no está funcionando?",
-    answer:
-      "Lo decimos en el reporte del mes correspondiente, no en la reunión de renovación. Preferimos ajustar rápido a sostener algo que no está dando resultado.",
   },
 ];

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Container from "@/components/ui/Container";
-import Arc from "@/components/ui/Arc";
+import PageHero from "@/components/ui/PageHero";
+import CtaBanner from "@/components/CtaBanner";
 
 export const metadata: Metadata = {
-  title: "Nosotros",
+  title: "Nosotros: agencia de marketing digital en Barcelona",
   description:
-    "Conoce al equipo detrás de Dos Studio y cómo pensamos el marketing digital.",
+    "Conoce a Dos Studio: dos socios fundadores en Barcelona que cubren estrategia, diseño, desarrollo y marketing digital, sin intermediarios.",
+  alternates: { canonical: "/nosotros" },
 };
 
 const values = [
@@ -45,49 +46,47 @@ export default function NosotrosPage() {
   return (
     <>
       <Header />
-      <main>
-        <section className="relative overflow-hidden border-b border-line py-20">
-          <Arc
-            className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 opacity-[0.06]"
-            rotate={180}
-          />
-          <Container>
-            <div className="max-w-2xl">
-              <span className="text-sm font-medium text-violet">Nosotros</span>
-              <h1 className="text-balance mt-4 font-display text-4xl font-bold tracking-tight md:text-5xl">
-                Un estudio pequeño, a propósito
-              </h1>
-              <p className="mt-6 text-lg text-graphite">
+      <main id="contenido">
+        <PageHero
+          eyebrow="Nosotros"
+          title={
+            <>
+              Un estudio pequeño, <span className="text-violet-light">a propósito.</span>
+            </>
+          }
+          intro={
+            <>
+              <p>
                 Dos Studio nace en 2026 en Barcelona. Somos dos socios
                 fundadores que cubrimos, entre los dos, estrategia, diseño y
-                desarrollo — sin capas intermedias ni equipos tercerizados.
+                desarrollo, sin capas intermedias ni equipos tercerizados.
               </p>
-              <p className="mt-4 max-w-xl text-graphite">
-                Elegimos mantenernos pequeños porque creemos que así se
-                trabaja mejor: cada cliente habla directamente con quien
-                ejecuta su proyecto, y cada decisión se toma con el contexto
-                completo de la cuenta, no a través de reportes de terceros.
+              <p className="mt-4 text-base text-white/65">
+                Elegimos mantenernos pequeños porque creemos que así se trabaja
+                mejor: cada cliente habla directamente con quien ejecuta su
+                proyecto, y cada decisión se toma con el contexto completo de la
+                cuenta.
               </p>
-            </div>
-
-            <div className="mt-14 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-line bg-line">
+            </>
+          }
+          aside={
+            <dl className="grid grid-cols-3 gap-3 lg:grid-cols-1">
               {[
                 { value: "2", label: "socios fundadores" },
                 { value: "2026", label: "año de fundación" },
-                { value: "Barcelona", label: "sede del estudio" },
+                { value: "BCN", label: "sede del estudio" },
               ].map((stat) => (
-                <div key={stat.label} className="bg-paper p-6">
-                  <div className="font-display text-2xl font-bold">
-                    {stat.value}
-                  </div>
-                  <p className="mt-1 text-xs leading-relaxed text-graphite">
-                    {stat.label}
-                  </p>
+                <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/[0.05] p-5">
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd>
+                    <span className="block font-display text-3xl font-bold">{stat.value}</span>
+                    <span className="mt-1 block text-xs text-white/60">{stat.label}</span>
+                  </dd>
                 </div>
               ))}
-            </div>
-          </Container>
-        </section>
+            </dl>
+          }
+        />
 
         <section className="py-20">
           <Container>
@@ -133,24 +132,17 @@ export default function NosotrosPage() {
           </Container>
         </section>
 
-        <section className="border-t border-line bg-ink py-20 text-white">
-          <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h2 className="font-display text-2xl font-bold md:text-3xl">
-                ¿Te ves reflejado en esto?
-              </h2>
-              <p className="mt-3 max-w-md text-white/70">
-                Hablemos de tu marca y de en qué punto está hoy.
-              </p>
-            </div>
-            <Link
-              href="/contacto"
-              className="whitespace-nowrap rounded-full bg-violet px-7 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white hover:text-ink"
-            >
-              Escríbenos
-            </Link>
-          </Container>
-        </section>
+        <CtaBanner
+          eyebrow="¿Encajamos?"
+          title={
+            <>
+              ¿Te ves reflejado en esto<span className="text-violet-light">?</span>
+            </>
+          }
+          text="Hablemos de tu marca y de en qué punto está hoy. Empezamos con una llamada de 30 minutos."
+          primary={{ href: "/contacto", label: "Agendar una llamada" }}
+          secondary={{ href: "/portfolio", label: "Ver Portfolio" }}
+        />
       </main>
       <Footer />
     </>

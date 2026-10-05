@@ -19,6 +19,17 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMegaOpen(false);
+        setOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -47,12 +58,14 @@ export default function Header() {
             onMouseEnter={() => setMegaOpen(true)}
             onMouseLeave={() => setMegaOpen(false)}
           >
-            <Link
-              href="/servicios"
-              className="flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-violet-soft hover:text-violet"
-              aria-haspopup="true"
+            <button
+              type="button"
+              className={`flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-violet-soft hover:text-violet ${
+                megaOpen ? "bg-violet-soft text-violet" : "text-ink"
+              }`}
               aria-expanded={megaOpen}
-              onFocus={() => setMegaOpen(true)}
+              aria-controls="mega-servicios"
+              onClick={() => setMegaOpen((v) => !v)}
             >
               Servicios
               <svg
@@ -65,9 +78,10 @@ export default function Header() {
               >
                 <path d="m3 4.5 3 3 3-3" />
               </svg>
-            </Link>
+            </button>
 
             <div
+              id="mega-servicios"
               className={`absolute left-1/2 top-full w-[760px] -translate-x-1/2 pt-4 transition-all duration-200 ${
                 megaOpen
                   ? "visible translate-y-0 opacity-100"
@@ -103,22 +117,31 @@ export default function Header() {
                     </li>
                   ))}
                 </ul>
-                <div className="bg-brand-glow flex flex-col justify-between p-6 text-white">
+                <div className="flex flex-col justify-between bg-midnight p-6 text-white">
                   <div>
-                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-white/60">
-                      ¿Por dónde empiezo?
+                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-violet-light">
+                      Precio cerrado
                     </span>
                     <p className="mt-3 font-display text-lg font-bold leading-snug">
-                      Te ayudamos a elegir el servicio que mueve tu negocio hoy.
+                      Consulta qué incluye cada plan y cuánto cuesta antes de empezar.
                     </p>
                   </div>
-                  <Link
-                    href="/contacto"
-                    onClick={() => setMegaOpen(false)}
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-white"
-                  >
-                    Agenda una llamada <span aria-hidden="true">→</span>
-                  </Link>
+                  <div className="mt-6 space-y-3">
+                    <Link
+                      href="/servicios"
+                      onClick={() => setMegaOpen(false)}
+                      className="flex items-center justify-between rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-violet-soft"
+                    >
+                      Ver servicios y tarifas <span aria-hidden="true">→</span>
+                    </Link>
+                    <Link
+                      href="/contacto"
+                      onClick={() => setMegaOpen(false)}
+                      className="flex items-center justify-between px-1 text-sm font-medium text-white/80 hover:text-white"
+                    >
+                      Agendar una llamada <span aria-hidden="true">→</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -191,6 +214,13 @@ export default function Header() {
                 </Link>
               ))}
             </div>
+            <Link
+              href="/servicios"
+              onClick={() => setOpen(false)}
+              className="mx-3 mt-1 text-sm font-semibold text-violet"
+            >
+              Ver servicios y tarifas →
+            </Link>
             <div className="my-2 h-px bg-line" />
             {links.map((link) => (
               <Link
